@@ -1,33 +1,50 @@
 import { useState } from 'react';
-import { Button, Box, Heading, Text } from '@chakra-ui/react';
-
 import './App.css';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import ProductList from './components/ProductList';
+import { Box, Heading, Text } from '@chakra-ui/react';
+import ProductCard from './components/ProductCard';
+
+const products = [
+  {
+    id: 1,
+    title: 'Wireless Earbuds',
+    image: 'https://via.placeholder.com/150',
+    price: 49.99,
+  },
+  {
+    id: 2,
+    title: 'Smart Watch',
+    image: 'https://via.placeholder.com/150',
+    price: 89.99,
+  },
+  {
+    id: 3,
+    title: 'Fitness Tracker',
+    image: 'https://via.placeholder.com/150',
+    price: 39.99,
+  }
+];
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <Box textAlign="center" p={10}>
-        <Heading mb={4}>Welcome to Auralis Storefront 🌟</Heading>
-        <Text fontSize="lg" mb={4}>
-          Your one-stop shop for tech, skincare, and sports gear!
-        </Text>
-        <ProductList />
-        <Button colorScheme="teal" onClick={() => setCount(count + 1)} mt={6}>
-          Clicked {count} times
-        </Button>
+    <Box p={10}>
+      <Heading mb={4}>Auralis Storefront 🌟</Heading>
+      <Text fontSize="lg" mb={6}>Your one-stop shop for tech, skincare, and sports gear!</Text>
+      <Box display="flex" flexWrap="wrap" gap={4}>
+        {products.map(product => (
+          <ProductCard
+            key={product.id}
+            title={product.title}
+            image={product.image}
+            price={product.price}
+          />
+        ))}
       </Box>
-    </>
+    </Box>
   );
 }
 
 export default App;
+
 
 
 
