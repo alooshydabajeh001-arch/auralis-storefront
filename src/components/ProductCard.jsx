@@ -1,29 +1,29 @@
-import { Box, Image, Text, Badge, Button } from "@chakra-ui/react";
-import PropTypes from "prop-types";
+// src/components/ProductCard.jsx
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Box, Image, Text, Button } from '@chakra-ui/react';
 
-const ProductCard = ({ title, image, price, onAddToCart }) => {
+function ProductCard({ title, image, price, onAddToCart }) {
   return (
-    <Box borderWidth="1px" borderRadius="lg" overflow="hidden" p={4} maxW="sm">
-      <Image src={image} alt={title} borderRadius="md" />
-      <Text mt={2} fontWeight="semibold" fontSize="lg">{title}</Text>
-      <Badge colorScheme="green" mt={1}>
-        {typeof price === "number" && !isNaN(price)
-          ? new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(price)
-          : `$${price}`}
-      </Badge>
-      <Button mt={4} colorScheme="teal" size="sm" onClick={onAddToCart}>Add to Cart</Button>
+    <Box borderWidth="1px" borderRadius="lg" overflow="hidden" p={4} textAlign="center">
+      <Image src={image} alt={title} mb={4} />
+      <Text fontWeight="bold" fontSize="xl">{title}</Text>
+      <Text color="gray.600">${Number(price).toFixed(2)}</Text>
+      <Button colorScheme="teal" mt={3} onClick={onAddToCart}>
+        Add to Cart
+      </Button>
     </Box>
   );
-};
+}
 
-export default ProductCard;
 ProductCard.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  price: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]).isRequired,
-  onAddToCart: PropTypes.func,
+  price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  onAddToCart: PropTypes.func
 };
+
+export default ProductCard;
+
+
 
