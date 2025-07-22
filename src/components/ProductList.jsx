@@ -8,37 +8,32 @@ const products = [
     id: 1,
     title: 'Wireless Earbuds',
     image: 'https://via.placeholder.com/150',
-    price: 49.99
+    price: 49.99,
   },
   {
     id: 2,
-    title: 'Vegan Skincare Set',
+    title: 'Smart Watch',
     image: 'https://via.placeholder.com/150',
-    price: 35.5
+    price: 79.99,
   },
   {
     id: 3,
-    title: 'Smart Fitness Tracker',
+    title: 'Vitamin C Serum',
     image: 'https://via.placeholder.com/150',
-    price: 89.99
-  }
+    price: 25.00,
+  },
 ];
 
 function ProductList() {
   return (
-    <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6} p={4}>
+    <SimpleGrid columns={[1, 2, 3]} spacing={8} mt={8}>
       {products.map((product) => (
-        <ProductCard
-          key={product.id}
-          title={product.title}
-          image={product.image}
-          price={product.price}
-          onAddToCart={() => alert(`${product.title} added to cart!`)}
-        />
+        <ProductCard key={product.id} {...product} />
       ))}
     </SimpleGrid>
   );
 }
 
 export default ProductList;
+
 
